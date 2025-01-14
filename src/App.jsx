@@ -1,149 +1,79 @@
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import "./App.css";
-
-function App() {
-  const [formdata, setFormdata] = useState({
-    name: "",
-    description: "",
-    price: 0,
-    category: "",
-    stock: 0,
-    image: "",
-    brand: "",
-    rating: 0,
-    numReviews: 0,
-  });
-  const [image, setimage] = useState("");
-  const handlechange = async (e) => {
-    const { name, value, type, files } = e.target;
-    if (type === "file") {
-      const file = await encodeFileToBase64(files[0]);
-      setFormdata({ ...formdata, image: file });
-    } else {
-      setFormdata({
-        ...formdata,
-        [name]: value,
-      });
-    }
-  };
-
-  const handlesubmit = async (e) => {
-    e.preventDefault();
-    console.log(formdata);
-    const response = await fetch("http://localhost:3000/api/products", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formdata),
-    });
-
-    const result = await response.json();
-    console.log(result);
-  };
-
-  const encodeFileToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result.split(",")[1]); // Extract only Base64 part
-      reader.onerror = (error) => reject(error);
-    });
-  };
+import React, { useEffect, useState } from "react";
+import img from "../src/assets/hero1.jpg";
+import { Input } from "./components/ui/input";
+import { Button } from "./components/ui/button";
+import { Container, Link, Typography } from "@mui/material";
+import { ImBrightnessContrast } from "react-icons/im";
+export default function App() {
+  const [imgIndex, setImgIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+  const images = [
+    "../src/assets/hero1.jpg",
+    "../src/assets/hero2.jpg",
+    "../src/assets/hero4.jpg",
+    "../src/assets/hero5.jpg",
+    "../src/assets/hero6.jpg",
+  ];
 
   useEffect(() => {
-    const fetchdata = async () => {
-      const data = await fetch(
-        "http://localhost:3000/api/products/678581a2e3a8a251c2f4b1d4"
-      );
-      const res = await data.json();
-      const decodedImage = `data:image/png;base64,${res.data.image}`;
-      console.log(decodedImage);
-      setimage(decodedImage);
-    };
-    fetchdata();
-  }, []);
+    const interval = setInterval(() => {
+      setFade(false);
+      setImgIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setFade(true), 500;
+    }, 5000);
 
+    return () => clearInterval(interval);
+  }, [images.length]);
   return (
-    <div>
-      {/* <img src={image} alt="Fetched" /> */}
+    <div className="bg-background">
+      <div>
+        <div className="w-full flex justify-between items-center  shadow-2xl p-4">
+          <h1 className="text-lg font-extrabold ">NAF BRANDS</h1>
+          <div className="text-2x ">
+            <ImBrightnessContrast />
+          </div>
+        </div>
 
-      <form onSubmit={handlesubmit}>
-        <label htmlFor="">name</label>
-        <input
-          type="text"
-          name="name"
-          required
-          onChange={handlechange}
-          value={formdata.name}
-        />
-        <label htmlFor="">description</label>
-        <input
-          type="text"
-          name="description"
-          required
-          onChange={handlechange}
-          value={formdata.description}
-        />
-        <label htmlFor="">price</label>
-        <input
-          type="number"
-          name="price"
-          required
-          onChange={handlechange}
-          value={formdata.price}
-        />
-        <label htmlFor="">catagory</label>
-        <input
-          type="text"
-          name="category"
-          required
-          onChange={handlechange}
-          value={formdata.category}
-        />
-        <label htmlFor="">stock</label>
-        <input
-          type="number"
-          name="stock"
-          onChange={handlechange}
-          value={formdata.stock}
-        />
-        <label htmlFor="">brand</label>
-        <input
-          type="text"
-          name="brand"
-          required
-          onChange={handlechange}
-          value={formdata.brand}
-        />
-        <label htmlFor="">rating</label>
-        <input
-          type="number"
-          name="rating"
-          onChange={handlechange}
-          value={formdata.rating}
-        />
-        <label htmlFor="">numReviews</label>
-        <input
-          type="number"
-          name="numReviews"
-          onChange={handlechange}
-          value={formdata.numReviews}
-        />
-        <label htmlFor="">image</label>
-        <input
-          type="file"
-          name="image"
-          id="file-upload"
-          required
-          accept=".png, "
-          onChange={handlechange}
-        />
-        <Button type="submit" className="w-[25%] text-xl ">
-          save
-        </Button>
-      </form>
+        <div className="flex justify-center items-center h-[91dvh]  md:grid md:grid-cols-2 ">
+          <div className="block md:flex md:justify-center md:items-center">
+            <form className="flex gap-y-6 min-w-[90%] max-w-md  items-center  p-10 rounded-xl  flex-col">
+              <Typography
+                variant="h4"
+                component="h1"
+                sx={{ fontSize: "1.5xl", fontWeight: "700" }}
+              >
+                sign in
+              </Typography>
+              <Button className="w-full " variant="outline">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/640px-Google_%22G%22_logo.svg.png"
+                  className="w-7"
+                />
+                sign in with google
+              </Button>
+              <div className="w-full">
+                <Input type="email" placeholder="Email" />
+              </div>
+
+              <div className="w-full flex flex-col ">
+                <Input type="password" placeholder="Password" />
+                <a className="mt-2  text-right  underline cursor-pointer">
+                  forget password
+                </a>
+              </div>
+
+              <Button className="w-full text-xl bg-primary ">sign in</Button>
+            </form>
+          </div>
+
+          <div
+            className={`transition-opacity duration-1000 ${
+              fade ? "opacity-100" : "opacity-0"
+            } hidden sm:hidden bg-cover md:block h-[100%] z-0`}
+            style={{ backgroundImage: `url(${images[imgIndex]})` }}
+          ></div>
+        </div>
+      </div>
     </div>
   );
 }
-
-export default App;
