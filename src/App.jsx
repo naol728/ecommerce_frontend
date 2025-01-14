@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Button } from "@/components/ui/button";
 import "./App.css";
 
 function App() {
@@ -66,13 +65,14 @@ function App() {
 
   return (
     <div>
-      <button>fetch</button>
-      <img src={image} alt="Fetched" />
+      {/* <img src={image} alt="Fetched" /> */}
+
       <form onSubmit={handlesubmit}>
         <label htmlFor="">name</label>
         <input
           type="text"
           name="name"
+          required
           onChange={handlechange}
           value={formdata.name}
         />
@@ -80,6 +80,7 @@ function App() {
         <input
           type="text"
           name="description"
+          required
           onChange={handlechange}
           value={formdata.description}
         />
@@ -87,6 +88,7 @@ function App() {
         <input
           type="number"
           name="price"
+          required
           onChange={handlechange}
           value={formdata.price}
         />
@@ -94,6 +96,7 @@ function App() {
         <input
           type="text"
           name="category"
+          required
           onChange={handlechange}
           value={formdata.category}
         />
@@ -108,6 +111,7 @@ function App() {
         <input
           type="text"
           name="brand"
+          required
           onChange={handlechange}
           value={formdata.brand}
         />
@@ -130,10 +134,13 @@ function App() {
           type="file"
           name="image"
           id="file-upload"
-          accept=".jpeg, .png, .jpg"
+          required
+          accept=".png, "
           onChange={handlechange}
         />
-        <button type="submit">save</button>
+        <Button type="submit" className="w-[25%] text-xl ">
+          save
+        </Button>
       </form>
     </div>
   );
