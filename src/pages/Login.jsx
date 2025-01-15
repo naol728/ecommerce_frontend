@@ -4,7 +4,7 @@ import { Button } from "../components/ui/button";
 import { Typography } from "@mui/material";
 import Navbar from "../components/custom/Navbar";
 import { Link } from "react-router-dom";
-export default function Signin() {
+export default function Login() {
   const [imgIndex, setImgIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const images = [
@@ -26,10 +26,17 @@ export default function Signin() {
   }, [images.length]);
 
   return (
-    <div className=" ">
+    <div>
       <div>
         <Navbar />
         <div className="flex justify-center items-center h-[91dvh]  md:grid md:grid-cols-2 ">
+          <div
+            className={`transition-opacity ease-in duration-200 ${
+              fade ? "bg-opacity-100" : "bg-opacity-100"
+            } hidden sm:hidden bg-cover sm:bg-center md:bg-right-top  mt-2 md:block h-[100%] `}
+            style={{ backgroundImage: `url(${images[imgIndex]})` }}
+          ></div>
+
           <div className="block md:flex md:justify-center md:items-center ">
             <form className="flex gap-y-6 w-full max-w-md  items-center p-10 rounded-xl  flex-col">
               <Typography
@@ -37,42 +44,30 @@ export default function Signin() {
                 component="h1"
                 sx={{ fontSize: "1.5xl", fontWeight: "700" }}
               >
-                sign in
+                sign up
               </Typography>
-              <Button className="w-full " variant="outline">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/640px-Google_%22G%22_logo.svg.png"
-                  className="w-7"
-                />
-                sign in with google
-              </Button>
+
               <div className="w-full">
                 <Input type="email" placeholder="Email" />
               </div>
 
               <div className="w-full flex flex-col ">
                 <Input type="password" placeholder="Password" />
-                <a className="mt-2  text-right  underline cursor-pointer">
-                  forget password
-                </a>
               </div>
 
-              <Button className="w-full text-xl bg-primary ">sign in</Button>
+              <div className="w-full flex flex-col ">
+                <Input type="password" placeholder=" Conform Password" />
+              </div>
+
+              <Button className="w-full text-xl bg-primary ">sign up</Button>
               <div className="font-semibold text-lg">
                 i have no account{" "}
-                <Link to="/signup" className="underline ml-3 ">
+                <Link to="/" className="underline ml-3 ">
                   sign up
                 </Link>
               </div>
             </form>
           </div>
-
-          <div
-            className={`transition-opacity ease-in duration-200 ${
-              fade ? "bg-opacity-100" : "bg-opacity-100"
-            } hidden sm:hidden bg-cover sm:bg-center md:bg-right-top  mt-2 md:block h-[100%] `}
-            style={{ backgroundImage: `url(${images[imgIndex]})` }}
-          ></div>
         </div>
       </div>
     </div>
