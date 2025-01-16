@@ -29,7 +29,7 @@ export default function Signin() {
     <div className=" ">
       <div>
         <Navbar />
-        <div className="flex justify-center items-center h-[91dvh]  md:grid md:grid-cols-2 ">
+        <div className="flex justify-center items-center h-[90.5dvh]  md:grid md:grid-cols-2 ">
           <div className="block md:flex md:justify-center md:items-center ">
             <form className="flex gap-y-6 w-full max-w-md  items-center p-10 rounded-xl  flex-col">
               <Typography

@@ -27,47 +27,45 @@ export default function Login() {
 
   return (
     <div>
-      <div>
-        <Navbar />
-        <div className="flex justify-center items-center h-[91dvh]  md:grid md:grid-cols-2 ">
-          <div
-            className={`transition-opacity ease-in duration-200 ${
-              fade ? "bg-opacity-100" : "bg-opacity-100"
-            } hidden sm:hidden bg-cover sm:bg-center md:bg-right-top  mt-2 md:block h-[100%] `}
-            style={{ backgroundImage: `url(${images[imgIndex]})` }}
-          ></div>
+      <Navbar />
+      <div className="flex justify-center items-center h-[90.5dvh]  md:grid md:grid-cols-2 ">
+        <div
+          className={`transition-opacity ease-in duration-200 ${
+            fade ? "bg-opacity-100" : "bg-opacity-100"
+          } hidden sm:hidden bg-cover sm:bg-center md:bg-right-top  mt-2 md:block h-[100%] `}
+          style={{ backgroundImage: `url(${images[imgIndex]})` }}
+        ></div>
 
-          <div className="block md:flex md:justify-center md:items-center ">
-            <form className="flex gap-y-6 w-full max-w-md  items-center p-10 rounded-xl  flex-col">
-              <Typography
-                variant="h4"
-                component="h1"
-                sx={{ fontSize: "1.5xl", fontWeight: "700" }}
-              >
+        <div className="block md:flex md:justify-center md:items-center ">
+          <form className="flex gap-y-6 w-full max-w-md  items-center p-10 rounded-xl  flex-col">
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ fontSize: "1.5xl", fontWeight: "700" }}
+            >
+              sign up
+            </Typography>
+
+            <div className="w-full">
+              <Input type="email" placeholder="Email" />
+            </div>
+
+            <div className="w-full flex flex-col ">
+              <Input type="password" placeholder="Password" />
+            </div>
+
+            <div className="w-full flex flex-col ">
+              <Input type="password" placeholder=" Conform Password" />
+            </div>
+
+            <Button className="w-full text-xl bg-primary ">sign up</Button>
+            <div className="font-semibold text-lg">
+              i have no account{" "}
+              <Link to="/" className="underline ml-3 ">
                 sign up
-              </Typography>
-
-              <div className="w-full">
-                <Input type="email" placeholder="Email" />
-              </div>
-
-              <div className="w-full flex flex-col ">
-                <Input type="password" placeholder="Password" />
-              </div>
-
-              <div className="w-full flex flex-col ">
-                <Input type="password" placeholder=" Conform Password" />
-              </div>
-
-              <Button className="w-full text-xl bg-primary ">sign up</Button>
-              <div className="font-semibold text-lg">
-                i have no account{" "}
-                <Link to="/" className="underline ml-3 ">
-                  sign up
-                </Link>
-              </div>
-            </form>
-          </div>
+              </Link>
+            </div>
+          </form>
         </div>
       </div>
     </div>
