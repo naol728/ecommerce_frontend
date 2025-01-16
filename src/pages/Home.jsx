@@ -2,7 +2,9 @@ import Navbar from "@/components/custom/Navbar";
 import React from "react";
 import { motion } from "framer-motion";
 import { AuroraBackground } from "../components/ui/aurora-background";
+// import { AnimatedTestimonials } from "../components/ui/animated-testimonials";
 import { Link } from "react-router-dom";
+import { GlareCard } from "@/components/ui/glare-card";
 export default function Home() {
   return (
     <>
@@ -29,6 +31,28 @@ export default function Home() {
           </button>
         </motion.div>
       </AuroraBackground>
+      {/* <AnimatedTestimonials testimonials={testimonials} /> */}
+      <div className="mb-10">
+        <h2 className="text-center text-5xl font-bold mb-5">
+          {" "}
+          our best products{" "}
+        </h2>
+        <div className="flex flex-wrap justify-evenly space-y-3">
+          <GlareCard>
+            <img src="../../src/assets/hero9.jpg" />
+            <h1 className="text-xl text-white text-center">our best shert</h1>
+          </GlareCard>
+          <GlareCard>
+            <img src="../../src/assets/hero2.jpg" />
+            <h1 className="text-xl text-white text-center">our best shert</h1>
+          </GlareCard>
+          <GlareCard>
+            <img src="../../src/assets/hero8.jpg" />
+            <h1 className="text-xl text-white text-center">our best shert</h1>
+          </GlareCard>{" "}
+        </div>
+      </div>
+      <div></div>
     </>
   );
 }
