@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { GlareCard } from "@/components/ui/glare-card";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
+import Footer from "@/components/custom/Footer";
 export default function Home() {
   return (
     <>
@@ -19,18 +20,18 @@ export default function Home() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-4 items-center justify-center px-4 h-screen "
+        className="relative flex flex-col gap-4 items-center justify-center px-4 h-screen  "
       >
         <video
           autoPlay
           loop
           muted
-          className="absolute top-0 left-0 w-full h-full object-cover blur-sx"
+          className="absolute top-0 left-0 w-full h-full object-cover blur-sx p-14  "
         >
-          <source src="../../src/assets/home2.mp4" type="video/mp4" />
+          <source src="../../src/assets/home3.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="text-3xl md:text-7xl font-bold dark:text-white text-center z-30">
+        {/* <div className="text-3xl md:text-7xl font-bold dark:text-white text-center z-30">
           NAF brands makes you cool you know
         </div>
         <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4 z-30 ">
@@ -38,92 +39,52 @@ export default function Home() {
         </div>
         <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-8 py-4 z-30">
           <Link to="/login">shop now</Link>
-        </button>
+        </button> */}
       </motion.div>
 
-      <div className="">
+      <div className="h-screen p-2">
         <h2 className="text-center text-5xl font-bold mb-5">
           {" "}
           featured products{" "}
         </h2>
-        <div className="flex flex-wrap justify-evenly space-y-3 ">
-          <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
-            <img
-              src={`https://cdn-images.farfetch-contents.com/17/69/23/07/17692307_37690458_1000.jpg`}
-              alt="jordans"
-              height="400"
-              width="400"
-              className="object-contain"
-            />
-            <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
-              Air Jordan 4 Retro Reimagined
-            </p>
-
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              The Air Jordan 4 Retro Reimagined Bred will release on Saturday,
-              February 17, 2024. Your best opportunity to get these right now is
-              by entering raffles and waiting for the official releases.
-            </p>
-            <button className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
-              <span>Buy now </span>
-              <span className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
-                $100
-              </span>
-            </button>
-          </BackgroundGradient>
-          <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
-            <img
-              src={`https://cdn-images.farfetch-contents.com/17/69/23/07/17692307_37690458_1000.jpg`}
-              alt="jordans"
-              height="400"
-              width="400"
-              className="object-contain"
-            />
-            <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
-              Air Jordan 4 Retro Reimagined
-            </p>
-
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              The Air Jordan 4 Retro Reimagined Bred will release on Saturday,
-              February 17, 2024. Your best opportunity to get these right now is
-              by entering raffles and waiting for the official releases.
-            </p>
-            <button className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
-              <span>Buy now </span>
-              <span className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
-                $100
-              </span>
-            </button>
-          </BackgroundGradient>
-          <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
-            <img
-              src={`https://cdn-images.farfetch-contents.com/17/69/23/07/17692307_37690458_1000.jpg`}
-              alt="jordans"
-              height="400"
-              width="400"
-              className="object-contain"
-            />
-            <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
-              Air Jordan 4 Retro Reimagined
-            </p>
-
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              The Air Jordan 4 Retro Reimagined Bred will release on Saturday,
-              February 17, 2024. Your best opportunity to get these right now is
-              by entering raffles and waiting for the official releases.
-            </p>
-            <button className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
-              <span>Buy now </span>
-              <span className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
-                $100
-              </span>
-            </button>
-          </BackgroundGradient>
+        <div className="flex flex-wrap justify-evenly space-y-3 h-screen  ">
+          <div className="grid grid-col-3 grid-rows-2 gap-5 w-full">
+            <div
+              className=" col-start-1 col-end-3 bg-center bg-no-repeat bg-cover rounded-xl "
+              style={{
+                backgroundImage:
+                  "url(https://i.pinimg.com/736x/d7/f5/d6/d7f5d6d038ed26c9e0874b12ad902b8b.jpg)",
+              }}
+            ></div>
+            <div
+              className=" col-start-3 col-end-4 p-10 row-start-1 row-end-3 bg-cover bg-center bg-no-repeat rounded-xl"
+              style={{
+                backgroundImage:
+                  "url(https://i.pinimg.com/736x/9c/5b/57/9c5b57e85040cc03d1cd5ac95245d258.jpg)",
+              }}
+            >
+              {" "}
+            </div>
+            <div
+              className="bg-red-300 bg-cover bg-center bg-no-repeat rounded-xl"
+              style={{
+                backgroundImage:
+                  "url(https://i.pinimg.com/736x/6a/1a/a9/6a1aa9b3f83d19e8f6ee46769e2a3262.jpg)",
+              }}
+            ></div>
+            <div
+              className="bg-orange-600 bg-cover bg-center bg-no-repeat rounded-xl"
+              style={{
+                backgroundImage:
+                  "url( https://i.pinimg.com/736x/46/79/27/467927cba825a262c63e325902d1b4d7.jpg)",
+              }}
+            ></div>
+          </div>
         </div>
       </div>
       <div>
         <div>
-          <div className="h-[40rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+          <div className="h-[20rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
             <InfiniteMovingCards
               items={testimonials}
               direction="right"
@@ -132,6 +93,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
