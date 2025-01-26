@@ -11,9 +11,11 @@ export default function Navbar() {
 
       <ul className=" hidden sm:flex space-x-3 font-bold  ">
         <li className="px-3 py-1 cursor-pointer rounded-2xl">home</li>
-        <li className="px-3 py-1 cursor-pointer rounded-2xl">about</li>
-        <li className="px-3 py-1 cursor-pointer rounded-2xl">products</li>
-        <li className="px-3 py-1 cursor-pointer rounded-2xl">testemonial</li>
+        <li className="px-3 py-1 cursor-pointer rounded-2xl">
+          featurd products
+        </li>
+        <li className="px-3 py-1 cursor-pointer rounded-2xl">stock</li>
+        <li className="px-3 py-1 cursor-pointer rounded-2xl">best products</li>
       </ul>
       <div className=" flex items-center space-x-3">
         <div className="flex space-x-3">

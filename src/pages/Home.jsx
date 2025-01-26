@@ -12,6 +12,13 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 export default function Home() {
   return (
     <>
@@ -33,6 +40,7 @@ export default function Home() {
         </div>
         <video
           autoPlay
+          controls
           loop
           muted
           className="absolute top-0 left-0 w-full h-full object-cover blur-sx p-14  "
@@ -51,7 +59,7 @@ export default function Home() {
           ease: "easeInOut",
         }}
       >
-        <div className=" p-2">
+        <div className=" px-10 py-4">
           <h2 className="text-center text-5xl font-bold mb-5">
             {" "}
             featured products{" "}
@@ -59,40 +67,69 @@ export default function Home() {
 
           <div className="grid grid-col-3 grid-rows-2 gap-5 w-full h-screen grid-flow-col">
             <div
-              className=" col-start-1 col-end-3 bg-center bg-no-repeat bg-cover rounded-xl "
+              className=" col-start-1 col-end-3 bg-center bg-no-repeat bg-cover rounded-xl shadow-xl"
               style={{
                 backgroundImage:
                   "url(https://i.pinimg.com/736x/d7/f5/d6/d7f5d6d038ed26c9e0874b12ad902b8b.jpg)",
               }}
-            ></div>
+            >
+              {" "}
+              <div className="w-full  h-full backdrop-blur-sm hover:backdrop-blur-0  cursor-pointer flex justify-center items-center">
+                <h2 className="text-3xl font-black ">
+                  <span className="text-orange-600"> Nike</span>{" "}
+                  <span className="text-white"> Oranger</span>
+                </h2>
+              </div>
+            </div>
             <div
-              className=" col-start-3 col-end-4 p-10 row-start-1 row-end-3 bg-cover bg-center bg-no-repeat rounded-xl"
+              className=" col-start-3 col-end-4 p-10 row-start-1 row-end-3 bg-cover bg-center bg-no-repeat rounded-xl shadow-xl"
               style={{
                 backgroundImage:
                   "url(https://i.pinimg.com/736x/9c/5b/57/9c5b57e85040cc03d1cd5ac95245d258.jpg)",
               }}
             >
-              {" "}
+              <div className="w-full  h-full backdrop-blur-sm hover:backdrop-blur-0  cursor-pointer flex justify-center items-center">
+                <h2 className="text-3xl font-black ">
+                  {" "}
+                  <span className="text-red-600"> Nike</span>{" "}
+                  <span className="text-white"> RED</span>
+                </h2>
+              </div>
             </div>
             <div
-              className="bg-red-300 bg-cover bg-center bg-no-repeat rounded-xl"
+              className=" bg-cover bg-center bg-no-repeat rounded-xl shadow-xl"
               style={{
                 backgroundImage:
                   "url(https://i.pinimg.com/736x/6a/1a/a9/6a1aa9b3f83d19e8f6ee46769e2a3262.jpg)",
               }}
-            ></div>
+            >
+              {" "}
+              <div className="w-full  h-full backdrop-blur-sm hover:backdrop-blur-0  cursor-pointer flex justify-center items-center">
+                <h2 className="text-3xl font-black shadow-lg backdrop-blur-md ">
+                  <span className="text-green-400"> Nike</span>{" "}
+                  <span className="text-white"> GREEN</span>
+                </h2>
+              </div>
+            </div>
             <div
-              className="bg-orange-600 bg-cover bg-center bg-no-repeat rounded-xl"
+              className=" bg-cover bg-center bg-no-repeat rounded-xl shadow-xl"
               style={{
                 backgroundImage:
                   "url( https://i.pinimg.com/736x/46/79/27/467927cba825a262c63e325902d1b4d7.jpg)",
               }}
-            ></div>
+            >
+              <div className="w-full  h-full backdrop-blur-sm hover:backdrop-blur-0  cursor-pointer flex justify-center items-center ">
+                <h2 className="text-3xl font-black shadow-lg backdrop-blur-md ">
+                  <span className="text-yellow-400"> Nike </span>
+                  <span className="text-white"> YELLOW</span>
+                </h2>
+              </div>
+            </div>
           </div>
         </div>
       </motion.div>
 
-      <div className="p-4">
+      <div className="px-8 py-4">
         <h1 className="text-3xl font-bold text-left pl-2">Stock Products</h1>
         <div className=" flex overflow-x-scroll">
           {products.map((item) => (
@@ -118,6 +155,45 @@ export default function Home() {
               </Card>
             </div>
           ))}
+        </div>
+      </div>
+      <div className="flex justify-center items-center h-max">
+        <div className="text-center w-[60%]">
+          <h2 className="text-2xl my-8 font-bold">
+            Frequently Asked Questions ?
+          </h2>
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-center">
+                Is it accessible?
+              </AccordionTrigger>
+              <AccordionContent>
+                Yes. It adheres to the WAI-ARIA design pattern.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-center">
+                Is it accessible?
+              </AccordionTrigger>
+              <AccordionContent>
+                Yes. It adheres to the WAI-ARIA design pattern.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="text-center">
+                Is it accessible?
+              </AccordionTrigger>
+              <AccordionContent>
+                Yes. It adheres to the WAI-ARIA design pattern.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </div>
 
