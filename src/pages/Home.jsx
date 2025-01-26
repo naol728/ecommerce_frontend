@@ -1,17 +1,22 @@
 import Navbar from "@/components/custom/Navbar";
 import React from "react";
 import { motion } from "framer-motion";
-import { AuroraBackground } from "../components/ui/aurora-background";
-// import { AnimatedTestimonials } from "../components/ui/animated-testimonials";
-import { Link } from "react-router-dom";
-import { GlareCard } from "@/components/ui/glare-card";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
-import { BackgroundGradient } from "@/components/ui/background-gradient";
 import Footer from "@/components/custom/Footer";
+import Example from "./Promo";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 export default function Home() {
   return (
     <>
       <Navbar />
+
       <motion.div
         initial={{ opacity: 0.0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -20,8 +25,12 @@ export default function Home() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-4 items-center justify-center px-4 h-screen  "
+        className="relative flex flex-col gap-4 items-center justify-center  h-screen  "
       >
+        {" "}
+        <div className="z-30 text-xl md:text-3xl font-bold dark:text-white text-center absolute top-5 ">
+          Welcome To NAF Brands We Sell Brand
+        </div>
         <video
           autoPlay
           loop
@@ -31,24 +40,24 @@ export default function Home() {
           <source src="../../src/assets/home3.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        {/* <div className="text-3xl md:text-7xl font-bold dark:text-white text-center z-30">
-          NAF brands makes you cool you know
-        </div>
-        <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4 z-30 ">
-          And wearing NAF brands makes you buitiful
-        </div>
-        <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-8 py-4 z-30">
-          <Link to="/login">shop now</Link>
-        </button> */}
       </motion.div>
 
-      <div className="h-screen p-2">
-        <h2 className="text-center text-5xl font-bold mb-5">
-          {" "}
-          featured products{" "}
-        </h2>
-        <div className="flex flex-wrap justify-evenly space-y-3 h-screen  ">
-          <div className="grid grid-col-3 grid-rows-2 gap-5 w-full">
+      <motion.div
+        initial={{ opacity: 0.0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.3,
+          duration: 0.8,
+          ease: "easeInOut",
+        }}
+      >
+        <div className=" p-2">
+          <h2 className="text-center text-5xl font-bold mb-5">
+            {" "}
+            featured products{" "}
+          </h2>
+
+          <div className="grid grid-col-3 grid-rows-2 gap-5 w-full h-screen grid-flow-col">
             <div
               className=" col-start-1 col-end-3 bg-center bg-no-repeat bg-cover rounded-xl "
               style={{
@@ -81,22 +90,68 @@ export default function Home() {
             ></div>
           </div>
         </div>
-      </div>
-      <div>
-        <div>
-          <div className="h-[20rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-            <InfiniteMovingCards
-              items={testimonials}
-              direction="right"
-              speed="slow"
-            />
-          </div>
+      </motion.div>
+
+      <div className="p-4">
+        <h1 className="text-3xl font-bold text-left pl-2">Stock Products</h1>
+        <div className=" flex overflow-x-scroll">
+          {products.map((item) => (
+            <div className="p-3 ">
+              <Card sx={{ minWidth: 300 }}>
+                <CardMedia
+                  component="img"
+                  alt="green iguana"
+                  height="150"
+                  image={item.src}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {item.name}
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: "text.secondary" }}>
+                    {item.price}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button>Buy now</Button>
+                </CardActions>
+              </Card>
+            </div>
+          ))}
         </div>
       </div>
+
       <Footer />
     </>
   );
 }
+const products = [
+  {
+    src: "https://i.pinimg.com/736x/55/0d/52/550d528c7a31b41f72d2a05e058639b9.jpg",
+    price: "$30",
+    name: "Nike Jordan 1",
+  },
+  {
+    src: "https://i.pinimg.com/736x/17/54/a9/1754a96c267c6f0509c974d4c96a88da.jpg",
+    price: "$30",
+    name: "AirForce 1",
+  },
+  {
+    src: "https://i.pinimg.com/736x/46/b9/45/46b945136a30cbcd5cd5a22e0b539c85.jpg",
+    price: "$30",
+    name: "Nike sb ",
+  },
+  {
+    src: "https://i.pinimg.com/736x/98/79/bd/9879bdf305e1c22ab807704c571ca6bc.jpg",
+    price: "$30",
+    name: "Jordan 4",
+  },
+  {
+    src: "https://i.pinimg.com/736x/83/39/2e/83392e1ead2a5764f783ac537d1237af.jpg",
+    price: "$30",
+    name: "Jordan 21",
+  },
+];
 
 const testimonials = [
   {

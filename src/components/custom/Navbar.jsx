@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 export default function Navbar() {
   return (
-    <div className="w-full flex justify-between items-center fixed top-0  shadow-2xl h-14 z-50 bg-background px-4 mt-2">
+    <div className="w-full flex justify-between items-center fixed top-0  shadow-2xl h-14 z-50 bg-background px-4 ">
       <h1 className="text-lg font-extrabold ">
         <Link to="/">NAF BRANDS</Link>
       </h1>
@@ -29,7 +29,6 @@ export default function Navbar() {
             </Link>
           </Button>
         </div>
-        <ImBrightnessContrast />
       </div>
     </div>
   );
