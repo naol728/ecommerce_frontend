@@ -1,9 +1,7 @@
 import Navbar from "@/components/custom/Navbar";
 import React from "react";
 import { motion } from "framer-motion";
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import FooterSection from "@/components/custom/Footer";
-import Example from "./Promo";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -59,8 +57,8 @@ export default function Home() {
           ease: "easeInOut",
         }}
       >
-        <div className=" px-10 py-4">
-          <h2 className="text-center text-5xl font-bold mb-5">
+        <div className=" px-8 py-4">
+          <h2 className="text-center text-2xl sm:text-5xl font-bold mb-5">
             {" "}
             featured products{" "}
           </h2>
@@ -157,7 +155,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="flex justify-center items-center h-max">
+      <div className="flex justify-center items-center h-max py-8 w-full">
         <div className="text-center w-[60%]">
           <h2 className="text-2xl my-8 font-bold">
             Frequently Asked Questions ?
@@ -165,10 +163,14 @@ export default function Home() {
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-center">
-                Is it accessible?
+                What should I consider when choosing the right shoe size?
               </AccordionTrigger>
               <AccordionContent>
-                Yes. It adheres to the WAI-ARIA design pattern.
+                <div>Measure Your Feet</div>
+                <div>Check Size Charts</div>
+                <div>Consider Shoe Type</div>
+                <div> Account for Socks</div>
+                <div>Check Return Policy</div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -176,10 +178,15 @@ export default function Home() {
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-center">
-                Is it accessible?
+                How do I care for and maintain my shoes to make them last
+                longer?
               </AccordionTrigger>
               <AccordionContent>
-                Yes. It adheres to the WAI-ARIA design pattern.
+                <div>Clean Regularly</div>
+                <div>Rotate Your Shoes</div>
+                <div>Use Shoe Trees</div>
+                <div>Protect from Water</div>
+                <div>Repair Promptly</div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -187,10 +194,21 @@ export default function Home() {
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-center">
-                Is it accessible?
+                What payment methods are accepted on your shoe shopping site?
               </AccordionTrigger>
               <AccordionContent>
-                Yes. It adheres to the WAI-ARIA design pattern.
+                <div>
+                  1,Credit/Debit Cards: Visa, Mastercard, American Express, and
+                  Discover.
+                </div>
+                <div>
+                  2,Digital Wallets: PayPal, Apple Pay, Google Pay, and other
+                  popular digital payment options.
+                </div>
+                <div>
+                  3,Buy Now, Pay Later: Services like Afterpay, Klarna, or
+                  Affirm (if applicable).
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
