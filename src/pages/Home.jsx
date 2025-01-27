@@ -2,7 +2,7 @@ import Navbar from "@/components/custom/Navbar";
 import React from "react";
 import { motion } from "framer-motion";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
-import Footer from "@/components/custom/Footer";
+import FooterSection from "@/components/custom/Footer";
 import Example from "./Promo";
 import { Button } from "@/components/ui/button";
 import {
@@ -197,7 +197,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer />
+      <FooterSection />
     </>
   );
 }
