@@ -1,11 +1,9 @@
-import { ModeToggle } from "@/components/ui/mode-toggle";
 import {
   Footer,
   FooterColumn,
   FooterBottom,
   FooterContent,
 } from "@/components/ui/footer";
-import LaunchUI from "@/components/logos/launch-ui";
 
 export default function FooterSection() {
   return (
@@ -15,7 +13,6 @@ export default function FooterSection() {
           <FooterContent>
             <FooterColumn className="col-span-2 sm:col-span-3 md:col-span-1">
               <div className="flex items-center gap-2">
-                <LaunchUI />
                 <h3 className="text-xl font-bold">NAF Brands</h3>
               </div>
             </FooterColumn>
@@ -60,7 +57,6 @@ export default function FooterSection() {
             <div className="flex items-center text-white gap-4">
               <a href="/">Privacy Policy</a>
               <a href="/">Terms of Service</a>
-              <ModeToggle />
             </div>
           </FooterBottom>
         </Footer>
