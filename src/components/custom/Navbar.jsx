@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 export default function Navbar() {
   return (
-    <div className="w-full flex justify-between items-center fixed top-0  shadow-2xl h-14 z-50 backdrop-blur-md  px-4 ">
+    <div className="w-full flex justify-between items-center fixed top-0  shadow-2xl h-14 z-50 backdrop-blur-lg  px-4 ">
       <h1 className=" text-md  sm:text-lg font-extrabold ">
         <Link to="/">NAF BRANDS</Link>
       </h1>
@@ -22,12 +22,7 @@ export default function Navbar() {
           <Button>
             {" "}
             <Link to="/login" className="px-1 py-0 cursor-pointer rounded-2xl">
-              sign in
-            </Link>
-          </Button>
-          <Button variant="outline">
-            <Link to="/signup" className="px-1 py-0 cursor-pointer rounded-2xl">
-              sign up
+              Get Strated
             </Link>
           </Button>
         </div>
