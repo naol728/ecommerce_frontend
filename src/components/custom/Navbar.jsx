@@ -10,12 +10,19 @@ export default function Navbar() {
       </h1>
 
       <ul className=" hidden sm:flex space-x-3 font-bold  ">
-        <li className="px-3 py-1 cursor-pointer rounded-2xl">home</li>
         <li className="px-3 py-1 cursor-pointer rounded-2xl">
-          featurd products
+          {" "}
+          <a href="#home"> home</a>
         </li>
-        <li className="px-3 py-1 cursor-pointer rounded-2xl">stock</li>
-        <li className="px-3 py-1 cursor-pointer rounded-2xl">FAQ</li>
+        <li className="px-3 py-1 cursor-pointer rounded-2xl">
+          <a href="#featured">featurd products</a>
+        </li>
+        <li className="px-3 py-1 cursor-pointer rounded-2xl">
+          <a href="#stock">Stock</a>
+        </li>
+        <li className="px-3 py-1 cursor-pointer rounded-2xl">
+          <a href="#FAQ">FAQ</a>
+        </li>
       </ul>
       <div className=" flex items-center space-x-3">
         <div className="flex space-x-1 sm:space-x-3">

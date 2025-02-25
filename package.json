@@ -16,6 +16,7 @@
     "@mui/icons-material": "^6.3.1",
     "@mui/material": "^6.3.1",
     "@mui/styled-engine-sc": "^6.3.1",
+    "@pigment-css/react": "^0.0.30",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-dialog": "^1.1.5",
     "@radix-ui/react-dropdown-menu": "^2.1.5",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@pigment-css/vite-plugin": "^0.0.30",
     "@radix-ui/react-slot": "^1.1.2",
     "@types/node": "^22.10.6",
     "@types/react": "^18.3.18",

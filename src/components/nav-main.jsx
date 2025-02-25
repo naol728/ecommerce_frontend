@@ -5,29 +5,26 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   SidebarGroup,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-export function NavMain({
-  items
-}) {
-  const { isMobile } = useSidebar()
+export function NavMain({ items }) {
+  const { isMobile } = useSidebar();
 
   return (
-    (<SidebarGroup>
+    <SidebarGroup>
       <SidebarMenu>
         {items.map((item) => (
           <DropdownMenu key={item.title}>
             <SidebarMenuItem>
               <DropdownMenuTrigger asChild>
-                <SidebarMenuButton
-                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+                <SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
                   {item.title} <MoreHorizontal className="ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
@@ -35,7 +32,8 @@ export function NavMain({
                 <DropdownMenuContent
                   side={isMobile ? "bottom" : "right"}
                   align={isMobile ? "end" : "start"}
-                  className="min-w-56 rounded-lg">
+                  className="min-w-56 rounded-lg"
+                >
                   {item.items.map((item) => (
                     <DropdownMenuItem asChild key={item.title}>
                       <a href={item.url}>{item.title}</a>
@@ -47,6 +45,6 @@ export function NavMain({
           </DropdownMenu>
         ))}
       </SidebarMenu>
-    </SidebarGroup>)
+    </SidebarGroup>
   );
 }

@@ -13,6 +13,13 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 
 export default function Page() {
   return (
@@ -40,30 +47,39 @@ export default function Page() {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div>
-              <img
-                src="https://cdn-images.farfetch-contents.com/18/76/90/29/18769029_40595644_1000.jpg"
-                alt=""
-              />{" "}
-              butonn
-            </div>
-
-            <div>
-              <img
-                src="https://cdn-images.farfetch-contents.com/11/70/77/94/11707794_8097746_1000.jpg"
-                alt=""
+            <Card sx={{ maxWidth: 300 }}>
+              <CardMedia
+                component="img"
+                height="200"
+                image="https://cdn-images.farfetch-contents.com/18/76/90/29/18769029_40595644_1000.jpg"
               />
-            </div>
-            <div> <img
-                src="https://cdn-images.farfetch-contents.com/11/70/77/94/11707794_8097746_1000.jpg"
-                alt=""
-              /></div>
-            <div>lakajkajajh</div>
-            <div>lakajkajajh</div>
-            <div>lakajkajajh</div>
-            <div>lakajkajajh</div>
-            <div>lakajkajajh</div>
-            <div>lakajkajajh</div>
+              <CardContent>
+                <Typography variant="h6">product.name</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  $product.price
+                </Typography>
+                <Button variant="contained" color="primary" sx={{ mt: 1 }}>
+                  Add to Cart
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card sx={{ maxWidth: 300 }}>
+              <CardMedia
+                component="img"
+                height="200"
+                image="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTP4dT53uvg70C8tGWzapsKE_jfMZYDMiBJ4gktXqsHwxX_JvO9m08JGwIUiBkf7Fc4hjhdTNYoMSk4tPKP1Mj9-tGSkXpz65I7V9XyM_BePTSQme-FuDIwA_Dzh0Jml91r5zd9UvTC&usqp=CAc"
+              />
+              <CardContent>
+                <Typography variant="h6">product.name</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  $product.price
+                </Typography>
+                <Button variant="contained" color="primary" sx={{ mt: 1 }}>
+                  Add to Cart
+                </Button>
+              </CardContent>
+            </Card>
           </div>
           <div className="min-h-[100vh] flex-1 rounded-xl bg-neutral-100/50 md:min-h-min dark:bg-neutral-800/50" />
         </div>
