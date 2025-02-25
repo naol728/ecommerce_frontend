@@ -1,7 +1,5 @@
 import React from "react";
 
-const Shop = () => {
-  return <div>this is home</div>;
-};
-
-export default Shop;
+export default function Shop() {
+  return <div className=" h-full "></div>;
+}
