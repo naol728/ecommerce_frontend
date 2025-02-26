@@ -29,7 +29,7 @@ export default function Navbar() {
           <Button>
             {" "}
             <Link to="/login" className="px-1 py-0 cursor-pointer rounded-2xl">
-              Get Strated
+              Shop Now
             </Link>
           </Button>
         </div>
