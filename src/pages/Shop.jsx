@@ -11,11 +11,12 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { styled, alpha } from "@mui/material/styles";
 import { Badge, IconButton, Tooltip } from "@mui/material";
-import Demo from "./Demo";
-import Carts from "./Carts";
+import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import Filter from "./Filter";
+import Carts from "./Carts";
 export default function Shop() {
   const products = [
     {
@@ -60,11 +61,65 @@ export default function Shop() {
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAHtCmA_RepVfTf_9blQPO98NK3yYWg49VaA&s",
     },
+    {
+      id: 98,
+      title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+      price: 109.95,
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAHtCmA_RepVfTf_9blQPO98NK3yYWg49VaA&s",
+    },
+    {
+      id: 76,
+      title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+      price: 109.95,
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAHtCmA_RepVfTf_9blQPO98NK3yYWg49VaA&s",
+    },
   ];
   // console.log(products);
   const addtocart = () => {
     console.log("add to cart");
   };
+  const Search = styled("div")(({ theme }) => ({
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(1),
+      width: "auto",
+    },
+  }));
+  const SearchIconWrapper = styled("div")(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }));
+
+  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: "inherit",
+    width: "100%",
+    "& .MuiInputBase-input": {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      transition: theme.transitions.create("width"),
+      [theme.breakpoints.up("sm")]: {
+        width: "12ch",
+        "&:focus": {
+          width: "20ch",
+        },
+      },
+    },
+  }));
 
   return (
     <div className=" h-full ">
@@ -81,19 +136,22 @@ export default function Shop() {
             paddingX: 1.5,
           }}
         >
-          <Box sx={{ display: "flex", gap: 2 }}>
+          <Box sx={{ display: "flex", gap: 2, ml: 2 }}>
             <Typography
               variant="h6"
-              sx={{ fontWeight: "600", fontSize: "1.2rem" }}
+              sx={{ fontWeight: "600", fontSize: "1.1rem", mt: 1 }}
             >
               Search
             </Typography>
-            <Tooltip title="Search">
-              <IconButton color="primary" size="small">
+            <Search>
+              <SearchIconWrapper>
                 <SearchIcon />
-              </IconButton>
-            </Tooltip>
-            <Input placeholder="Search Products" />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
           </Box>
 
           <Box sx={{ display: "flex", gap: 2 }}>
@@ -106,18 +164,21 @@ export default function Shop() {
           </Box>
         </Box>
       </Box>
-      <Box className="flex mt-3">
-        <Box className="w-[15%]">
-          <Demo />
+      <Box className="md:flex mt-2">
+        <Box className=" h-[25%]   md:w-[15%] md:h-screen ">
+          <Filter />
         </Box>
-        <Box className="grid xs:grid-col-1 md:grid-cols-3 space-x-4 w-[85%] space-y-2 p-4">
+        <Box className="grid grid-cols-2 space-y-2 p-4 space-x-4 grid-col-2 bg-gray-100 shadow-xl rounded-md   md:grid-cols-4  md:w-[85%] ">
           {products.map((product) => (
             <Card
               sx={{
-                maxWidth: 300,
+                maxWidth: 250,
                 borderRadius: 2,
                 boxShadow: 3,
-                // minHeight: 500,
+                cursor: "pointer",
+                "&:hover": {
+                  boxShadow: 5,
+                },
               }}
             >
               {/* Product Image */}
@@ -131,7 +192,7 @@ export default function Shop() {
 
               {/* Product Details */}
               <CardContent>
-                <Typography variant="h6" fontWeight="bold">
+                <Typography variant="p" fontWeight="bold">
                   {product.title}
                 </Typography>
                 <Typography color="text.secondary">${product.price}</Typography>
@@ -141,7 +202,7 @@ export default function Shop() {
               <CardActions>
                 <Button
                   variant="contained"
-                  sx={{ backgroundColor: "#FFA500" }}
+                  sx={{ backgroundColor: "#000" }}
                   fullWidth
                   // onClick={() => onAddToCart(product)}
                 >
