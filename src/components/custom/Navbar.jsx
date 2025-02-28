@@ -8,7 +8,7 @@ export default function Navbar() {
       <h1 className=" text-md  sm:text-lg font-extrabold ">
         <Link to="/">NAF BRANDS</Link>
       </h1>
-
+    
       <ul className=" hidden sm:flex space-x-3 font-bold  ">
         <li className="px-3 py-1 cursor-pointer rounded-2xl">
           {" "}
@@ -24,7 +24,7 @@ export default function Navbar() {
           <a href="#FAQ">FAQ</a>
         </li>
       </ul>
-      <div className=" flex items-center space-x-3">
+      <div className="hidden   md:flex items-center space-x-3">
         <div className="flex space-x-1 sm:space-x-3">
           <Button>
             {" "}
