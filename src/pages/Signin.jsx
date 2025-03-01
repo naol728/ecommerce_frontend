@@ -4,9 +4,23 @@ import { Button } from "../components/ui/button";
 import { Typography } from "@mui/material";
 import Navbar from "../components/custom/Navbar";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/context/Authcontext";
+
 export default function Signin() {
   const [imgIndex, setImgIndex] = useState(0);
+  const [credental, setCredental] = useState({ email: "", password: "" });
+  const { login } = useAuth();
   const [fade, setFade] = useState(true);
+
+  function handlesumbit(e) {
+    e.preventDefault();
+    login(credental);
+  }
+
+  function handlechange(e) {
+    const { value, name } = e.target;
+    setCredental((prev) => ({ ...prev, [name]: value }));
+  }
   const images = [
     "./../../src/assets/hero1.jpg",
     "./../../src/assets/hero2.jpg",
@@ -31,7 +45,10 @@ export default function Signin() {
         <Navbar />
         <div className="flex justify-center items-center h-[90.5dvh]  md:grid md:grid-cols-2 ">
           <div className="block md:flex md:justify-center md:items-center ">
-            <form className="flex gap-y-6 w-full max-w-md  items-center p-10 rounded-xl  flex-col">
+            <form
+              className="flex gap-y-6 w-full max-w-md  items-center p-10 rounded-xl  flex-col"
+              onSubmit={handlesumbit}
+            >
               <Typography
                 variant="h4"
                 component="h1"
@@ -47,17 +64,31 @@ export default function Signin() {
                 sign in with google
               </Button>
               <div className="w-full">
-                <Input type="email" placeholder="Email" />
+                <Input
+                  type="email"
+                  placeholder="email"
+                  name="email"
+                  value={credental.email}
+                  onChange={handlechange}
+                />
               </div>
 
               <div className="w-full flex flex-col ">
-                <Input type="password" placeholder="Password" />
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={credental.password}
+                  onChange={handlechange}
+                />
                 <a className="mt-2  text-right  underline cursor-pointer">
                   forget password
                 </a>
               </div>
 
-              <Button className="w-full text-xl bg-primary ">sign in</Button>
+              <Button className="w-full text-xl bg-primary " type="submit">
+                sign in
+              </Button>
               <div className="font-semibold text-lg">
                 i have no account{" "}
                 <Link to="/signup" className="underline ml-3 ">

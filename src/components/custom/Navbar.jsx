@@ -1,39 +1,114 @@
 import React from "react";
-import { ImBrightnessContrast } from "react-icons/im";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+  useMediaQuery,
+  useTheme,
+  Box,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
-import { Button } from "../ui/button";
-export default function Navbar() {
+
+function Navbar() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md")); // Check if screen size is mobile/tablet
+  const [anchorEl, setAnchorEl] = React.useState(null); // State for mobile menu
+
+  // Handle mobile menu open
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  // Handle mobile menu close
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <div className="w-full flex justify-between items-center fixed top-0  shadow-2xl h-14 z-50 backdrop-blur-lg  px-4 ">
-      <h1 className=" text-md  sm:text-lg font-extrabold ">
-        <Link to="/">NAF BRANDS</Link>
-      </h1>
-    
-      <ul className=" hidden sm:flex space-x-3 font-bold  ">
-        <li className="px-3 py-1 cursor-pointer rounded-2xl">
-          {" "}
-          <a href="#home"> home</a>
-        </li>
-        <li className="px-3 py-1 cursor-pointer rounded-2xl">
-          <a href="#featured">featurd products</a>
-        </li>
-        <li className="px-3 py-1 cursor-pointer rounded-2xl">
-          <a href="#stock">Stock</a>
-        </li>
-        <li className="px-3 py-1 cursor-pointer rounded-2xl">
-          <a href="#FAQ">FAQ</a>
-        </li>
-      </ul>
-      <div className="hidden   md:flex items-center space-x-3">
-        <div className="flex space-x-1 sm:space-x-3">
-          <Button>
-            {" "}
-            <Link to="/login" className="px-1 py-0 cursor-pointer rounded-2xl">
-              Shop Now
-            </Link>
-          </Button>
-        </div>
-      </div>
-    </div>
+    <AppBar
+      position="fixed"
+      sx={{
+        backgroundColor: "transparent",
+        backdropFilter: "blur(10px)",
+
+        color: "black",
+        boxShadow: "black",
+      }}
+    >
+      <Toolbar>
+        {/* Logo or Brand Name */}
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ flexGrow: 1, fontWeight: "bold" }}
+        >
+          <Link to="/"> NAF Brands</Link>
+        </Typography>
+
+        {/* Desktop Navigation */}
+        {!isMobile && (
+          <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <Button color="inherit">Home</Button>
+            <Button color="inherit">FEATURED</Button>
+            <Button color="inherit">STOCK</Button>
+            <Button color="inherit">FAQ</Button>
+
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{
+                backgroundColor: "black",
+                color: "white",
+                "&:hover": { backgroundColor: "#333" },
+              }}
+            >
+              <Link to="/signup"> Sign Up </Link>
+            </Button>
+          </Box>
+        )}
+
+        {/* Mobile Navigation */}
+        {isMobile && (
+          <>
+            <IconButton color="inherit" onClick={handleMenuOpen}>
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleMenuClose}
+              sx={{ mt: "45px" }}
+            >
+              <MenuItem onClick={handleMenuClose}>Home</MenuItem>
+              <MenuItem onClick={handleMenuClose}>FEATURED</MenuItem>
+              <MenuItem onClick={handleMenuClose}>STOCK</MenuItem>
+              <MenuItem onClick={handleMenuClose}>FAQ</MenuItem>
+
+              <MenuItem onClick={handleMenuClose}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    backgroundColor: "black",
+                    color: "white",
+                    "&:hover": { backgroundColor: "#333" },
+                  }}
+                >
+                  <Link to="/signup"> Sign Up </Link>
+                </Button>
+              </MenuItem>
+            </Menu>
+          </>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 }
+
+export default Navbar;
