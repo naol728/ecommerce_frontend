@@ -1,13 +1,14 @@
 import React from "react";
 import Signin from "./pages/Signin";
-import Login from "./pages/Login";
+import Login from "./pages/Signup";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
+import AuthProvider from "./context/Authcontext";
 const rout = createBrowserRouter([
   {
-    path: "/login",
+    path: "/signin",
     element: <Signin />,
   },
   {
@@ -27,7 +28,9 @@ const rout = createBrowserRouter([
 export default function App() {
   return (
     <>
-      <RouterProvider router={rout} />
+      <AuthProvider>
+        <RouterProvider router={rout} />
+      </AuthProvider>
     </>
   );
 }
