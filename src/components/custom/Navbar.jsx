@@ -14,18 +14,18 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/context/Authcontext";
 
 function Navbar() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md")); // Check if screen size is mobile/tablet
   const [anchorEl, setAnchorEl] = React.useState(null); // State for mobile menu
+  const { islogin } = useAuth();
 
-  // Handle mobile menu open
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  // Handle mobile menu close
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
@@ -68,7 +68,9 @@ function Navbar() {
                 "&:hover": { backgroundColor: "#333" },
               }}
             >
-              <Link to="/signup"> Sign Up </Link>
+              <Link to={islogin ? "/shop" : "/signup"}>
+                {islogin ? "shop now" : " Sign Up"}
+              </Link>
             </Button>
           </Box>
         )}
@@ -100,7 +102,9 @@ function Navbar() {
                     "&:hover": { backgroundColor: "#333" },
                   }}
                 >
-                  <Link to="/signup"> Sign Up </Link>
+                  <Link to={islogin ? "/shop" : "/signup"}>
+                    {islogin ? "shop now" : " Sign Up"}
+                  </Link>
                 </Button>
               </MenuItem>
             </Menu>

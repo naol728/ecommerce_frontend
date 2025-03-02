@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
 
@@ -21,13 +21,42 @@ export default function AuthProvider({ children }) {
     });
     const data = await response.json();
     if (response.ok) {
-      localStorage.setItem("token", data.token); // Save token
+      localStorage.setItem("token", data.token);
+      setlogin();
       alert("Login successful!");
     } else {
       alert("Login failed!");
     }
-    setUser(data.user);
   }
+
+  useEffect(() => {
+    async function fetchToken() {
+      const token = localStorage.getItem("token");
+      if (token) {
+        const response = await axios.post(
+          "http://localhost:3000/api/auth/protect",
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (response.status === 200) {
+          const userinfo = await axios.get(
+            `http://localhost:3000/api/users/${response.data.user.id}`
+          );
+          setUser(userinfo.data.message);
+          setlogin();
+        } else if (response.status === 401) {
+          localStorage.removeItem("token");
+        }
+      }
+    }
+    fetchToken();
+  }, [islogin]);
+  console.log(user);
+  console.log(islogin);
   const value = {
     islogin,
     user,
