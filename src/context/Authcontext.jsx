@@ -13,12 +13,20 @@ export default function AuthProvider({ children }) {
     setIslogin(false);
   }
   async function login(credental) {
-    const { username, password } = credental;
-    const users = await axios.get("http://127.0.0.1:3000/api/users");
-    const currentUser = users.find(
-      (user) => user.username === username && user.password === password
-    );
-    console.log(currentUser);
+    const { email, password } = credental;
+    const response = await fetch("http://localhost:3000/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await response.json();
+    if (response.ok) {
+      localStorage.setItem("token", data.token); // Save token
+      alert("Login successful!");
+    } else {
+      alert("Login failed!");
+    }
+    setUser(data.user);
   }
   const value = {
     islogin,
