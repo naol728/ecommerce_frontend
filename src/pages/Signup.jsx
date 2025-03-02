@@ -3,13 +3,14 @@ import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
 import { Typography } from "@mui/material";
 import Navbar from "../components/custom/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "@/context/Authcontext";
 export default function Login() {
   const [imgIndex, setImgIndex] = useState(0);
   const [fade, setFade] = useState(true);
- 
+  const { islogin } = useAuth();
+  const navigate = useNavigate();
   const images = [
     "./../../src/assets/hero1.jpg",
     "./../../src/assets/hero2.jpg",
@@ -18,9 +19,6 @@ export default function Login() {
     "./../../src/assets/hero8.jpg",
     "./../../src/assets/hero9.jpg",
   ];
- 
-
-
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,6 +29,9 @@ export default function Login() {
     return () => clearInterval(interval);
   }, [images.length]);
 
+  if (islogin) {
+    navigate("/shop");
+  }
   return (
     <div>
       <Navbar />
@@ -43,10 +44,7 @@ export default function Login() {
         ></div>
 
         <div className="block md:flex md:justify-center md:items-center ">
-          <form
-            className="flex gap-y-6 w-full max-w-md  items-center p-10 rounded-xl  flex-col"
-          
-          >
+          <form className="flex gap-y-6 w-full max-w-md  items-center p-10 rounded-xl  flex-col">
             <Typography
               variant="h4"
               component="h1"

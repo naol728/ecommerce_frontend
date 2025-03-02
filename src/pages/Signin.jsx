@@ -3,15 +3,15 @@ import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
 import { Typography } from "@mui/material";
 import Navbar from "../components/custom/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/Authcontext";
 
 export default function Signin() {
   const [imgIndex, setImgIndex] = useState(0);
   const [credental, setCredental] = useState({ email: "", password: "" });
-  const { login } = useAuth();
+  const { login, islogin } = useAuth();
   const [fade, setFade] = useState(true);
-
+  const navigate = useNavigate();
   function handlesumbit(e) {
     e.preventDefault();
     login(credental);
@@ -39,6 +39,9 @@ export default function Signin() {
     return () => clearInterval(interval);
   }, [images.length]);
 
+  if (islogin) {
+    navigate("/shop");
+  }
   return (
     <div className=" ">
       <div>

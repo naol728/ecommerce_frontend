@@ -10,14 +10,19 @@ import {
   Input,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import { Badge, IconButton, Tooltip } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Filter from "./Filter";
 import Carts from "./Carts";
+import { useAuth } from "@/context/Authcontext";
+import { useNavigate } from "react-router-dom";
+
 export default function Shop() {
+  const { islogin } = useAuth();
+  const navigate = useNavigate();
   const products = [
     {
       id: 1,

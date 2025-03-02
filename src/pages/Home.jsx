@@ -17,8 +17,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Link } from "react-router-dom";
+import { useAuth } from "@/context/Authcontext";
 
 export default function Home() {
+  const { islogin } = useAuth();
   return (
     <>
       <Navbar />
@@ -163,9 +166,9 @@ export default function Home() {
                     <Button
                       variant="contained"
                       size="large"
-                      sx={{ backgroundColor: "#000", borderRadius: "8px" }}
+                      sx={{ backgroundColor: "#000", borderRadius: "6px" }}
                     >
-                      Buy now
+                      <Link to={islogin ? "/shop" : "/signup"}>Buy now</Link>
                     </Button>
                   </CardActions>
                 </Card>
