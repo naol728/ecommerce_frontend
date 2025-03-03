@@ -11,6 +11,7 @@ export default function AuthProvider({ children }) {
   }
   function setlogout() {
     setIslogin(false);
+    localStorage.removeItem("token");
   }
   async function login(credental) {
     const { email, password } = credental;

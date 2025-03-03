@@ -1,11 +1,12 @@
 import React from "react";
 import Signin from "./pages/Signin";
-import Login from "./pages/Signup";
+import Signup from "./pages/Signup";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import AuthProvider from "./context/Authcontext";
+import RegisterProvider from "./context/Registercontext";
 const rout = createBrowserRouter([
   {
     path: "/signin",
@@ -13,7 +14,11 @@ const rout = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <Login />,
+    element: (
+      <RegisterProvider>
+        <Signup />
+      </RegisterProvider>
+    ),
   },
   {
     path: "/",

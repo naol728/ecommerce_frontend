@@ -6,11 +6,32 @@ import Navbar from "../components/custom/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "@/context/Authcontext";
-export default function Login() {
+import { useRegister } from "@/context/Registercontext";
+export default function Signup() {
   const [imgIndex, setImgIndex] = useState(0);
   const [fade, setFade] = useState(true);
+  const [formdata, setFormdata] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [conformpassword, setConformpassword] = useState("");
   const { islogin } = useAuth();
   const navigate = useNavigate();
+  const { register } = useRegister();
+
+  function handleinput(e) {
+    const { name, value } = e.target;
+    setFormdata((prev) => ({ ...prev, [name]: value }));
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (conformpassword !== formdata.password)
+      return alert("please conform your password");
+    register(formdata);
+  }
+
   const images = [
     "./../../src/assets/hero1.jpg",
     "./../../src/assets/hero2.jpg",
@@ -44,7 +65,10 @@ export default function Login() {
         ></div>
 
         <div className="block md:flex md:justify-center md:items-center ">
-          <form className="flex gap-y-6 w-full max-w-md  items-center p-10 rounded-xl  flex-col">
+          <form
+            className="flex gap-y-6 w-full max-w-md  items-center p-10 rounded-xl  flex-col"
+            onSubmit={handleSubmit}
+          >
             <Typography
               variant="h4"
               component="h1"
@@ -54,18 +78,47 @@ export default function Login() {
             </Typography>
 
             <div className="w-full">
-              <Input type="email" placeholder="Email" />
+              <Input
+                type="name"
+                placeholder="name"
+                name="name"
+                onChange={handleinput}
+                value={formdata.name}
+              />
+            </div>
+
+            <div className="w-full">
+              <Input
+                type="email"
+                placeholder="Email"
+                name="email"
+                onChange={handleinput}
+                value={formdata.email}
+              />
             </div>
 
             <div className="w-full flex flex-col ">
-              <Input type="password" placeholder="Password" />
+              <Input
+                type="password"
+                placeholder="Password"
+                name="password"
+                onChange={handleinput}
+                value={formdata.password}
+              />
             </div>
 
             <div className="w-full flex flex-col ">
-              <Input type="password" placeholder=" Conform Password" />
+              <Input
+                type="password"
+                placeholder=" Conform Password"
+                onChange={(e) => setConformpassword(e.target.value)}
+                value={conformpassword}
+              />
             </div>
 
-            <Button className="w-full text-xl bg-primary ">sign up</Button>
+            <Button className="w-full text-xl bg-primary " type="submit">
+              sign up
+            </Button>
             <div className="font-semibold text-lg">
               i have no account{" "}
               <Link to="/signin" className="underline ml-3 ">
