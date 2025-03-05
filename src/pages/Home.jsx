@@ -143,8 +143,8 @@ export default function Home() {
           <h1 className="text-3xl font-bold text-left pl-2">Stock Products</h1>
           <Box className=" flex overflow-x-scroll">
             {products.map((item) => (
-              <Box className="p-3 ">
-                <Card sx={{ minWidth: 300 }}>
+              <Box className="p-3 " key={item.name}>
+                <Card sx={{ minWidth: 300 }} key={item.name}>
                   <CardMedia
                     component="img"
                     alt="green iguana"

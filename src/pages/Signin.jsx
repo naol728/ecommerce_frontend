@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
-import { Typography } from "@mui/material";
+import { Alert, Typography } from "@mui/material";
 import Navbar from "../components/custom/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/Authcontext";
@@ -9,7 +9,7 @@ import { useAuth } from "@/context/Authcontext";
 export default function Signin() {
   const [imgIndex, setImgIndex] = useState(0);
   const [credental, setCredental] = useState({ email: "", password: "" });
-  const { login, islogin } = useAuth();
+  const { login, islogin, error, setError } = useAuth();
   const [fade, setFade] = useState(true);
   const navigate = useNavigate();
   function handlesumbit(e) {
@@ -47,6 +47,11 @@ export default function Signin() {
       <div>
         <Navbar />
         <div className="flex justify-center items-center h-[90.5dvh]  md:grid md:grid-cols-2 ">
+          {/* <div className="absolute top-20 left-10">
+            {<Alert variant="filled" severity="success">
+              login successfuly
+            </Alert>}
+          </div> */}
           <div className="block md:flex md:justify-center md:items-center ">
             <form
               className="flex gap-y-6 w-full max-w-md  items-center p-10 rounded-xl  flex-col"
