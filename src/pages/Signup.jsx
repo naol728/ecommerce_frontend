@@ -18,11 +18,22 @@ export default function Signup() {
   const [conformpassword, setConformpassword] = useState("");
   const { islogin } = useAuth();
   const navigate = useNavigate();
-  const { register } = useRegister();
 
   function handleinput(e) {
     const { name, value } = e.target;
     setFormdata((prev) => ({ ...prev, [name]: value }));
+  }
+  async function register(formData) {
+    const { name, email, password } = formData;
+    const res = await axios.post("http://localhost:3000/api/users", {
+      name,
+      email,
+      password,
+    });
+
+    if (res.status === 201) {
+      navigate("/signin");
+    }
   }
 
   function handleSubmit(e) {

@@ -6,6 +6,7 @@ const AuthContext = createContext();
 export default function AuthProvider({ children }) {
   const [islogin, setIslogin] = useState(false);
   const [user, setUser] = useState(null);
+  const [error, setError] = useState(false);
   function setlogin() {
     setIslogin(true);
   }
@@ -24,9 +25,11 @@ export default function AuthProvider({ children }) {
     if (response.ok) {
       localStorage.setItem("token", data.token);
       setlogin();
+      setError(false);
       alert("Login successful!");
     } else {
       alert("Login failed!");
+      setError(false);
     }
   }
 
@@ -56,14 +59,15 @@ export default function AuthProvider({ children }) {
     }
     fetchToken();
   }, [islogin]);
-  console.log(user);
-  console.log(islogin);
+
   const value = {
     islogin,
     user,
     setlogin,
     setlogout,
     login,
+    error,
+    setError,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
