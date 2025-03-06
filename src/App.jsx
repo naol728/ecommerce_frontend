@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import AuthProvider from "./context/Authcontext";
 import RegisterProvider from "./context/Registercontext";
+import Dashboard from "./pages/Dashboard";
+import Addproduct from "./pages/Addproduct";
 const rout = createBrowserRouter([
   {
     path: "/signin",
@@ -28,6 +30,16 @@ const rout = createBrowserRouter([
   {
     path: "/shop",
     element: <Shop />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "addproduct",
+        element: <Addproduct />,
+      },
+    ],
   },
 ]);
 export default function App() {
