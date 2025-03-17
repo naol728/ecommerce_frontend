@@ -8,7 +8,6 @@ export default function Dashboard() {
     <Box sx={{ display: "flex" }}>
       <DashboardSidebar />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar />
         <Outlet />
       </Box>
     </Box>
